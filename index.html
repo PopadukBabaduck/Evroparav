@@ -84,7 +84,7 @@ fbq('track', 'PageView');
         <li><a href="#reviews">Відгуки</a></li>
       </ul>
     </nav>
-    <a href="https://t.me/Vasia_mreo" class="btn btn-telegram" target="_blank">
+    <a href="https://t.me/Vasia_mreo" class="btn btn-telegram telegram-btn" target="_blank">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21.48 5.61 18.8 19.37c-.21.97-.77 1.21-1.56.76l-4.32-3.18-2.08 2c-.23.23-.42.42-.85.42l.31-4.4 8-7.22c.34-.3-.07-.47-.53-.17l-9.88 6.22-4.24-1.32c-.92-.29-.94-.92.19-1.37l16.6-6.41c.77-.28 1.44.18 1.2 1.36Z" fill=\"#2AABEE\"/></svg>
       <span>Telegram</span>
     </a>
@@ -122,7 +122,7 @@ fbq('track', 'PageView');
     <div class="container">
       <h1>Отримайте водійські права онлайн — швидко та без зайвих клопотів</h1>
       <p>Ми пропонуємо легкий процес заміни прав або оформлення європейського зразка без передплати.</p>
-      <a href="https://t.me/Vasia_mreo" class="btn btn-primary">Переглянути ціни в Telegram</a>
+      <a href="https://t.me/Vasia_mreo" class="btn btn-primary telegram-btn">Переглянути ціни в Telegram</a>
     </div>
   </section>
 
@@ -247,8 +247,8 @@ fbq('track', 'PageView');
   <section class="cta-footer container">
     <h2>Зв'язок лише через Telegram</h2>
     <p>Хочете сісти за кермо вже через 10-12 днів?</p>
-    <a href="https://t.me/Vasia_mreo" class="btn btn-primary">Замовити в Telegram</a>
-    <p>Пишіть нам: @YourTelegramLink</p>
+    <a href="https://t.me/Vasia_mreo" class="btn btn-primary telegram-btn">Замовити в Telegram</a>
+    <p>Пишіть нам: @Vasia_mreo</p>
   </section>
 
   <!-- Footer -->
@@ -333,6 +333,31 @@ fbq('track', 'PageView');
     />
   </svg>
 </a>
+<a href="https://t.me/Vasia_mreo"
+   class="btn btn-primary telegram-btn"
+   data-label="CTA Footer"
+   target="_blank">
+  Замовити в Telegram
+</a>
 
+<!-- THIS: ПОСЛЕ ВСЕХ ЭЛЕМЕНТОВ, ПЕРЕД </body> -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.telegram-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const label = btn.dataset.label || 'Site Button';
+        if (window.gtag) {
+          gtag('event', 'generate_lead', {
+            event_category: 'Telegram',
+            event_label: label
+          });
+        }
+        if (window.fbq) {
+          fbq('track', 'Lead');
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>
